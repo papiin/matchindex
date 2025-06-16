@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaPiin - 免費媒合平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
+            background: #ffffff;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-logo {
+            height: 36px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: #666;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #e74c3c;
+        }
+
+        .login-btn {
+            background: #007CD3;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 124, 211, 0.3);
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 124, 211, 0.4);
+            background: #0069b3;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 80px 0;
+            text-align: center;
+            background: #ffffff;
+        }
+
+        .hero-section {
+            background: #f2f1f1;
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            max-width: 900px;
+        }
+
+        .hero-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: #7f8c8d;
+            margin-bottom: 50px;
+            line-height: 1.6;
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .option-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            border-radius: 20px;
+            padding: 40px 30px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: 2px solid #e0e0e0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(219, 0, 0, 0.1), rgba(0, 124, 211, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .option-card:hover::before {
+            opacity: 1;
+        }
+
+        .option-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: #e74c3c;
+        }
+
+        .option-card.brand:hover {
+            border-color: #007CD3;
+        }
+
+        .option-card.creator:hover {
+            border-color: #DB0000;
+        }
+
+        .option-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .brand .option-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+        }
+
+        .creator .option-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+        }
+
+        .option-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            position: relative;
+            z-index: 2;
+        }
+
+        .option-description {
+            font-size: 16px;
+            color: #7f8c8d;
+            line-height: 1.5;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .language-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .language-btn {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .language-btn:hover {
+            border-color: #e74c3c;
+            color: #e74c3c;
+        }
+
+        .copyright {
+            color: #95a5a6;
+            font-size: 14px;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-link {
+            color: #95a5a6;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .legal-link:hover {
+            color: #e74c3c;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .options-container {
+                grid-template-columns: 1fr;
+            }
+
+            .option-card {
+                padding: 30px 20px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .brand-logo {
+                height: 30px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-section {
+            animation: none;
+        }
+
+        .option-card {
+            animation: none;
+        }
+
+        .option-card:nth-child(2) {
+            animation: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <div class="logo">
+                <img src="img/logo.png" alt="PaPiin Logo" class="brand-logo">
+            </div>
+            <div class="nav-right">
+                <a href="#" class="nav-link">已經有 PaPiin 帳號了？</a>
+                <button class="login-btn">登入</button>
+            </div>
+        </nav>
+    </div>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="hero-section">
+                <h1 class="hero-title">選擇你的發案方式</h1>
+                <p class="hero-subtitle">免費使用，快到找到合適的合作對象！</p>
+                
+                <div class="options-container">
+                    <div class="option-card brand" onclick="selectOption('brand')">
+                        <img src="img/02.png" alt="Brand Icon" class="option-icon">
+                        <h2 class="option-title">我要媒合</h2>
+                        <p class="option-description">填寫影像需求，平台推薦合適人選</p>
+                    </div>
+                    
+                    <div class="option-card creator" onclick="selectOption('creator')">
+                        <img src="img/01.png" alt="Creator Icon" class="option-icon">
+                        <h2 class="option-title">我要找人</h2>
+                        <p class="option-description">發布工作需求，讓創作者主動應徵</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    Copyright © 2025 PaPiin All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function selectOption(type) {
+            if (type === 'brand') {
+                alert('歡迎品牌方！即將進入媒合流程，找到最適合的影像創作者。');
+            } else if (type === 'creator') {
+                alert('歡迎創作者！即將進入接案平台，尋找最棒的合作機會。');
+            }
+        }
+
+        // Add smooth hover effects
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add click animation
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'translateY(-5px) scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>
