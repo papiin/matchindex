@@ -31,6 +31,18 @@
             z-index: 100;
         }
 
+        .header-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .header-image-mobile {
+            width: 100%;
+            height: auto;
+            display: none;
+        }
+
         .nav {
             display: flex;
             justify-content: space-between;
@@ -201,8 +213,19 @@
 
         /* Footer */
         .footer {
-            padding: 30px 0;
-            margin-top: 50px;
+            margin-top: 60px;
+        }
+
+        .footer-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .footer-image-mobile {
+            width: 100%;
+            height: auto;
+            display: none;
         }
 
         .footer-content {
@@ -255,6 +278,25 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .header-image {
+                display: none;
+            }
+
+            .header-image-mobile {
+                display: block;
+                margin-top: 10px;
+                margin-bottom: 40px;
+            }
+
+            .footer-image {
+                display: none;
+            }
+
+            .footer-image-mobile {
+                display: block;
+                margin-top: 90px;
+            }
+
             .hero-title {
                 font-size: 30px;
             }
@@ -333,13 +375,10 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <nav class="nav">
-            <div class="logo">
-                <img src="img/logo.png" alt="PaPiin Logo" class="brand-logo">
-            </div>
-        </nav>
-    </div>
+    <header class="header">
+        <img src="img/header.png" alt="Header" class="header-image">
+        <img src="img/header_p.jpg" alt="Header Mobile" class="header-image-mobile">
+    </header>
 
     <main class="main-content">
         <div class="container">
@@ -369,13 +408,8 @@
     </main>
 
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="copyright">
-                    Copyright © 2025 PaPiin All Rights Reserved.
-                </div>
-            </div>
-        </div>
+        <img src="img/footer.png" alt="Footer" class="footer-image">
+        <img src="img/footer_p.jpg" alt="Footer Mobile" class="footer-image-mobile">
     </footer>
 
     <script>
