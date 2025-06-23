@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -99,7 +99,7 @@
 
         /* Main Content */
         .main-content {
-            padding: 40px 0;
+            padding: 80px 0 40px 0;
             text-align: center;
             background: #ffffff;
         }
@@ -109,14 +109,14 @@
             border-radius: 20px;
             padding: 40px;
             margin: 0 auto;
-            max-width: 900px;
+            max-width: 1200px;
         }
 
         .hero-title {
             font-size: 36px;
             font-weight: bold;
             color: #2c3e50;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .hero-subtitle {
@@ -128,7 +128,7 @@
 
         .options-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-top: 20px;
         }
@@ -158,13 +158,12 @@
         }
 
         .option-card:hover::before {
-            opacity: 1;
+            opacity: 0;
         }
 
         .option-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            border-color: #e74c3c;
         }
 
         .option-card.brand:hover {
@@ -172,6 +171,10 @@
         }
 
         .option-card.creator:hover {
+            border-color: #007CD3;
+        }
+
+        .option-card.case:hover {
             border-color: #DB0000;
         }
 
@@ -194,6 +197,12 @@
             margin: 0 auto 20px;
         }
 
+        .case .option-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+        }
+
         .option-title {
             font-size: 28px;
             font-weight: bold;
@@ -211,9 +220,38 @@
             z-index: 2;
         }
 
+        /* Ghost Buttons */
+        .ghost-buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .ghost-btn {
+            background-color: #ffffff;
+            border: 2px solid #aaaaaa;
+            color: #888888;
+            padding: 12px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .ghost-btn:hover {
+            color: #333333;
+            border-color: #333333;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
         /* Footer */
         .footer {
-            margin-top: 60px;
+            margin-top: 120px;
         }
 
         .footer-image {
@@ -284,8 +322,7 @@
 
             .header-image-mobile {
                 display: block;
-                margin-top: 10px;
-                margin-bottom: 40px;
+                margin-bottom: 30px;
             }
 
             .footer-image {
@@ -294,7 +331,11 @@
 
             .footer-image-mobile {
                 display: block;
-                margin-top: 90px;
+                margin-top: 30px;
+            }
+
+            .main-content {
+                padding: 20px 0 40px 0;
             }
 
             .hero-title {
@@ -347,6 +388,20 @@
             .brand-logo {
                 height: 30px;
             }
+
+            .ghost-buttons-container {
+                flex-direction: row;
+                gap: 15px;
+                margin-top: 40px;
+                justify-content: center;
+            }
+
+            .ghost-btn {
+                width: auto;
+                padding: 8px 20px;
+                font-size: 14px;
+                text-align: center;
+            }
         }
 
         /* Animations */
@@ -383,25 +438,38 @@
     <main class="main-content">
         <div class="container">
             <div class="hero-section">
-                <h1 class="hero-title">選擇你的發案方式</h1>
-                <p class="hero-subtitle">免費使用，快到找到合作對象！</p>
+                <h1 class="hero-title">選擇你的媒合方式</h1>
+                <p class="hero-subtitle">只要一分鐘，快速找到合作對象！</p>
                 
                 <div class="options-container">
                     <div class="option-card brand" onclick="window.location.href='https://papiin.com/projects'">
                         <img src="img/02.png" alt="Brand Icon" class="option-icon">
                         <div class="option-content">
-                            <h2 class="option-title">我要媒合</h2>
-                            <p class="option-description">填寫影像需求，平台推薦合適人選</p>
+                            <h2 class="option-title">推薦人選</h2>
+                            <p class="option-description">填寫需求，平台推薦創作者</p>
                         </div>
                     </div>
                     
-                    <div class="option-card creator" onclick="window.location.href='https://papiin.com/matching.html'">
+                    <div class="option-card creator" onclick="window.location.href='https://papiin.com/matching-create-case'">
                         <img src="img/01.png" alt="Creator Icon" class="option-icon">
                         <div class="option-content">
-                            <h2 class="option-title">我要找人</h2>
-                            <p class="option-description">發布工作需求，讓創作者主動應徵</p>
+                            <h2 class="option-title">招募人選</h2>
+                            <p class="option-description">刊登職缺，吸引創作者應徵</p>
                         </div>
                     </div>
+                    
+                    <div class="option-card case" onclick="window.location.href='https://papiin.com/matching.html'">
+                        <img src="img/03.PNG" alt="Case Icon" class="option-icon">
+                        <div class="option-content">
+                            <h2 class="option-title">應徵案件</h2>
+                            <p class="option-description">瀏覽案源，主動尋找工作機會</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ghost-buttons-container">
+                    <a href="https://papiin.com/projects/recommend-list" class="ghost-btn">推薦紀錄</a>
+                    <a href="https://papiin.com/matching-manage-case.html" class="ghost-btn">招募 / 應徵紀錄</a>
                 </div>
             </div>
         </div>
